@@ -1,0 +1,74 @@
+class Solution {
+    public int evalRPN(String[] s) {
+        Stack<String> st= new Stack<>();
+        for(int i=0;i<s.length;i++)
+        {
+//            if(Integer.parseInt(s[i])>=-200 && Integer.parseInt(s[i])<=200) {
+//                st.push(s[i]);
+//            }
+          if (s[i].equals("+"))
+            {
+                int op1=Integer.parseInt(st.peek());
+                st.pop();
+                int op2=Integer.parseInt(st.peek());
+                st.pop();
+                int ans=op2+op1;
+                String str1 = Integer.toString(ans);
+                st.push(str1);
+
+            }
+
+            else if (s[i].equals("-"))
+            {
+                int op1=Integer.parseInt(st.peek());
+                st.pop();
+                int op2=Integer.parseInt(st.peek());
+                st.pop();
+                int ans=op2-op1;
+                String str1 = Integer.toString(ans);
+                st.push(str1);
+
+            }
+            else if (s[i].equals("*"))
+            {
+                int op1=Integer.parseInt(st.peek());
+                st.pop();
+                int op2=Integer.parseInt(st.peek());
+                st.pop();
+                int ans=op2*op1;
+                String str1 = Integer.toString(ans);
+                st.push(str1);
+
+            }
+            else if (s[i].equals("/"))
+            {
+                int op1=Integer.parseInt(st.peek());
+                st.pop();
+                int op2=Integer.parseInt(st.peek());
+                st.pop();
+                int ans=op2/op1;
+                String str1 = Integer.toString(ans);
+                st.push(str1);
+
+
+            }
+            else if (s[i].equals("%"))
+            {
+                int op1=Integer.parseInt(st.peek());
+                st.pop();
+                int op2=Integer.parseInt(st.peek());
+                st.pop();
+                int ans=op2%op1;
+                String str1 = Integer.toString(ans);
+                st.push(str1);
+
+            }
+            else
+          {
+              st.push(s[i]);
+          }
+        }
+        return Integer.parseInt(st.peek());
+        
+    }
+}

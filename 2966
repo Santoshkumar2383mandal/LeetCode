@@ -1,0 +1,29 @@
+class Solution {
+    public int[][] divideArray(int[] nums, int k) {
+        
+        // int[][] a=new int[nums.length/3][3];
+        List<int[]> list=new ArrayList<>();
+        Arrays.sort(nums);
+        int i = 0;
+        while(i < nums.length)
+        {
+    
+           
+            int j=i+2;
+            if(nums[i+1]-nums[i]>k ||nums[j]-nums[i+1]>k || nums[j]-nums[i] >k )
+            {
+                return new int[][]{};
+            }
+            list.add(new int[]{nums[i],nums[i+1],nums[i+2]});
+            //above statement work as follows
+            // a[0]=nums[i];
+            // a[1]=nums[i+1];
+            // a[2]=nums[i+2];
+         
+           
+            i=j+1;
+        }
+         // push 2d arrray
+        return list.toArray(new int[list.size()][]);
+    }
+}

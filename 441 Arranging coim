@@ -1,0 +1,24 @@
+class Solution {
+    public int arrangeCoins(int n) {
+        long start =1;
+        long end=n;
+        long mid=0;
+        int ans=0;
+        while(start<=end)   /// given number are already sorted so use binary search
+        {
+                mid=(start+end)/2;
+                if(mid*(mid+1)/2<=n)   /// sum of n natural num n(n=1)/2
+                {
+                   start=mid+1;
+                    ans=(int)mid;
+
+                }
+                else if(mid*(mid+1)/2 >n)
+                {
+                    end=mid-1;
+                }
+               
+        }
+        return ans;
+    }
+}

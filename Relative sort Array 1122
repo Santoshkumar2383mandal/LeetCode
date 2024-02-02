@@ -1,0 +1,60 @@
+class Solution {
+    public int[] relativeSortArray(int[] arr1, int[] arr2) {
+        // Arrays.sort(arr1);
+        List<Integer> list=new ArrayList<>();
+
+         
+        int[] arrNew=new int[arr1.length];
+        int c=0;
+        int n=0;
+        int ans=0;
+        boolean b= false;
+        for(int i=0;i<arr1.length;i++)
+        {
+            b=false;
+        for(int j=0;j<arr2.length;j++)
+        {
+
+        if(arr2[j]==arr1[i])
+        {
+          b=true;
+          break;
+        }
+       
+        }
+                if(!b)
+                //  arrNot[n++]=arr1[j];
+                list.add(arr1[i]);
+        }
+        for(int i=0;i<arr2.length;i++)
+        {
+        for(int j=0;j<arr1.length;j++)
+        {
+
+        if(arr2[i]==arr1[j])
+        arrNew[c++]=arr1[j];
+        
+        }
+        }
+
+        /////////////////////
+
+        // 
+        // for(int i=0;i<arrNot.length;i++)
+        // {
+        //     arrNew[c++]=arrNot[i];
+        // }
+        int[] arrNot=new int[list.size()];
+        for (int i = 0; i < list.size(); i++)
+            arrNot[i] = list.get(i);
+        
+        Arrays.sort(arrNot);
+        for(int i=0;i<arrNot.length;i++)
+        {
+            arrNew[c++]=arrNot[i];
+        }
+        
+        return arrNew;
+        
+    }
+}

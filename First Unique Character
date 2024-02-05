@@ -1,0 +1,21 @@
+class Solution {
+    public int firstUniqChar(String s) {
+
+        int[] a=new int[26];  //create a array of size 26 that store value of the number of occurance in String
+     for(int i=0;i<s.length();i++)
+     {
+        char ch=s.charAt(i);
+         a[ch-'a']++; //each time increase value 
+     }
+      for(int i=0;i<s.length();i++)
+     {
+        char ch=s.charAt(i);
+         if(a[ch-'a']==1) /// compare the value of number of occurance, if it's value in arr[26] is one then returns its 'i' index value
+         {
+             return i;
+         }
+     }
+
+    return -1;    
+    }
+}

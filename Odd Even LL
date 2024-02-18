@@ -1,0 +1,84 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode oddEvenList(ListNode head) {
+         ListNode Odd=new ListNode(-101);
+            ListNode dummyodd=Odd;
+            ListNode Even=new ListNode(-1101);
+            ListNode dummyeven=Even;
+            ListNode current=head;
+            int count=1;
+            /// first way without creating newnode 
+            // TC o(1)
+            // SC O(1)
+            while(current!=null)
+            {
+                if(count%2!=0)
+               {
+                    dummyodd.next=current;
+                    dummyodd=current;
+               }
+               else
+               {
+                   dummyeven.next=current;
+                    dummyeven=current;
+               }
+               current=current.next;
+               count++;
+
+            }
+               dummyeven.next=null;
+               dummyodd.next=Even.next;
+               head=Odd.next;
+               return head;
+///////////////////////////////////////////////////
+/*************2nd way one odd then even then even next then odd next */
+//   if(head==null||head.next==null){
+//             return head;
+//         }
+//         ListNode odd=head;
+//         ListNode even = head.next;
+//         ListNode enHead = even;
+//         while (even != null && even.next != null && odd!=null&&odd.next!=null) {
+//             odd.next = even.next;
+//             odd = odd.next;
+//             even.next = odd.next;
+//             even = even.next;
+//         }
+//         odd.next = enHead;
+
+//         return head;
+
+ /*********************************************************** */   
+ /*********Third way with creating a newnode */        
+            // while(current!=null)
+            // {
+            //     if(count%2!=0)
+            //     {
+            //         ListNode newnode=new ListNode(current.val);
+            //         dummyodd.next=newnode;
+            //         dummyodd=newnode;
+            //     }
+            //     else
+            //     {
+            //         ListNode newnode=new ListNode(current.val);
+            //         dummyeven.next=newnode;
+            //         dummyeven=newnode;
+            //     }
+            //     count++;
+            //     current=current.next;
+            // }
+            // dummyodd.next=Even.next;
+            // head=Odd.next;
+            // return head;
+        
+    }
+}
